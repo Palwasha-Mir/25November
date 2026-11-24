@@ -3,135 +3,306 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Dudu ❤️</title>
+<title>Birthday Surprise | My Dudu</title>
 
 <style>
-*{margin:0;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --pink:#ffd1e5;
+  --rose:#f28ab8;
+  --gold:#f6d99b;
+  --cream:#fff8f1;
+  --wine:#54233d;
+}
+
 body{
-  background:#160c17;color:#fff;
-  font-family:Georgia,serif;
-  min-height:100vh;overflow-x:hidden
+  font-family:"Segoe UI",Georgia,sans-serif;
+  background:#201522;
+  color:white;
+  min-height:100vh;
+  overflow-x:hidden;
 }
 
 /* VIDEO BACKGROUND */
 #bgVideo{
-  position:fixed;inset:0;width:100%;height:100%;
-  object-fit:contain;background:#100813;
-  z-index:-3
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  background:#17101a;
+  z-index:-3;
 }
+
 .overlay{
-  position:fixed;inset:0;z-index:-2;
-  background:rgba(25,8,21,.25)
+  position:fixed;
+  inset:0;
+  background:rgba(30,15,27,.20);
+  z-index:-2;
 }
 
-/* FLOATING EFFECTS */
-#fx{position:fixed;inset:0;pointer-events:none;z-index:5}
-.float{
- position:absolute;bottom:-40px;
- animation:rise linear forwards
-}
-@keyframes rise{
- to{transform:translateY(-110vh) rotate(360deg);opacity:0}
-}
-.glow{animation:glow 2s infinite alternate}
-@keyframes glow{
- from{text-shadow:0 0 8px #ff8bc2}
- to{text-shadow:0 0 30px #ff43a1,0 0 50px #ff43a1}
+/* SOFT SPARKLES */
+#sparkles{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:4;
+  overflow:hidden;
 }
 
-/* PAGES */
-.page{
- min-height:100vh;padding:25px 15px;
- display:none;align-items:center;justify-content:center;
- text-align:center;animation:appear .6s
+.spark{
+  position:absolute;
+  animation: sparkle 5s ease-in-out forwards;
+  color:#ffe8bb;
+  text-shadow:0 0 12px #fff;
 }
-.page.active{display:flex}
-@keyframes appear{
- from{opacity:0;transform:translateY(20px)}
- to{opacity:1;transform:translateY(0)}
+
+@keyframes sparkle{
+  0%{opacity:0;transform:scale(.4)}
+  20%{opacity:.8}
+  70%{opacity:.5}
+  100%{opacity:0;transform:scale(1.4) translateY(-60px)}
 }
-.content{width:min(720px,100%)}
-.small{font-size:15px;color:#ffe0ee}
-.big{
- font-size:clamp(42px,10vw,78px);
- color:#ffc2df;line-height:1.15;
- margin:15px 0
+
+/* SCENES */
+.scene{
+  display:none;
+  min-height:100vh;
+  padding:25px 16px;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
 }
+
+.scene.active{
+  display:flex;
+  animation:enter .6s ease;
+}
+
+@keyframes enter{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+.wrap{
+  width:min(760px,100%);
+  margin:auto;
+}
+
+.glass{
+  padding:30px 20px;
+  border:1px solid rgba(255,255,255,.35);
+  background:rgba(39,18,34,.43);
+  backdrop-filter:blur(10px);
+  border-radius:28px;
+  box-shadow:0 20px 55px rgba(0,0,0,.18);
+}
+
+h1{
+  color:var(--pink);
+  font-size:clamp(38px,9vw,74px);
+  line-height:1.15;
+  margin:15px 0;
+  text-shadow:0 2px 15px #8b3860;
+}
+
+h2{
+  font-size:clamp(25px,6vw,42px);
+  color:var(--gold);
+  margin:14px 0;
+}
+
 .nickname{
- font-size:clamp(35px,8vw,60px);
- color:#ffb2d6;font-weight:bold;
- text-shadow:0 0 20px #ff54a3;
- margin:14px 0
+  font-size:clamp(34px,8vw,58px);
+  font-weight:900;
+  color:#fff1c8;
+  text-shadow:0 0 15px #f4c77980;
+  margin:18px 0;
+  letter-spacing:1px;
 }
-button{
- border:0;border-radius:50px;padding:14px 24px;
- margin:9px;font-size:16px;font-weight:bold;
- cursor:pointer;color:white;
- background:linear-gradient(135deg,#ff58a0,#d36bd2);
- box-shadow:0 0 22px #ff59a040;
- transition:.3s
+
+p{
+  font-size:clamp(16px,4vw,20px);
+  line-height:1.7;
+  margin:12px 0;
 }
-button:hover{transform:scale(1.07)}
-.back{background:#ffffff18;border:1px solid #ffffff35}
+
+.subtitle{
+  color:#fff0df;
+  font-size:15px;
+}
+
+.btn{
+  padding:14px 23px;
+  margin:8px;
+  border:1px solid #fff2;
+  border-radius:40px;
+  background:linear-gradient(135deg,#e982b0,#c96f9e);
+  color:white;
+  font-weight:800;
+  font-size:15px;
+  cursor:pointer;
+  box-shadow:0 6px 22px #d974a933;
+  transition:.25s;
+}
+
+.btn:hover{transform:translateY(-2px) scale(1.03)}
+
+.btn.gold{
+  background:linear-gradient(135deg,#f3d493,#d8aa5b);
+  color:#482a36;
+}
+
+.btn.dark{
+  background:rgba(255,255,255,.13);
+  border:1px solid rgba(255,255,255,.4);
+}
+
 .nav{margin-top:25px}
 
 /* PHOTOS */
-.photos{
- display:flex;justify-content:center;flex-wrap:wrap;
- gap:18px;margin:25px 0
+.gallery{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:18px;
+  margin:25px 0;
 }
-.photo{
- width:min(250px,44%);
- background:#fff;padding:8px;border-radius:14px;
- transform:rotate(-3deg);color:#a53667;
- box-shadow:0 12px 30px #0005
-}
-.photo:nth-child(2){transform:rotate(3deg)}
-.photo img{
- width:100%;height:300px;object-fit:cover;
- border-radius:8px
-}
-.caption{padding:9px;font-size:17px;font-weight:bold}
 
-/* CARTOON WORLD */
-.bearworld{
- display:flex;justify-content:center;align-items:center;
- gap:12px;margin:22px auto
+.frame{
+  width:min(255px,45%);
+  padding:9px;
+  background:#fffaf4;
+  border-radius:14px;
+  color:#78405b;
+  box-shadow:0 10px 28px #0003;
+  transform:rotate(-2deg);
 }
-.bear{
- width:105px;height:105px;border-radius:50%;
- background:#f4eee8;position:relative;
- box-shadow:0 0 30px #ffffff30;
- display:flex;align-items:center;justify-content:center;
- font-size:48px
-}
-.bear:before,.bear:after{
- content:"";position:absolute;top:-5px;
- width:35px;height:35px;border-radius:50%;
- background:#4c3939;border:5px solid #f4eee8
-}
-.bear:before{left:-3px}
-.bear:after{right:-3px}
-.panda{background:#fff}
-.panda:before,.panda:after{background:#222;border-color:#fff}
-.heartbig{font-size:38px;animation:pulse 1.2s infinite}
-@keyframes pulse{50%{transform:scale(1.2)}}
 
-/* SECRET */
-.envelope{
- font-size:100px;cursor:pointer;
- animation:bounce 2s infinite
+.frame:nth-child(2){transform:rotate(2deg)}
+
+.frame img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border-radius:9px;
 }
-@keyframes bounce{50%{transform:translateY(-10px)}}
-.secret{
- display:none;background:#fff1f7;color:#9a3765;
- padding:22px;border-radius:20px;margin:20px 0;
- font-size:21px;line-height:1.6
+
+.frame .caption{
+  padding:10px 4px;
+  font-size:16px;
+  font-weight:800;
 }
-.secret.show{display:block;animation:appear .5s}
+
+/* CUTE COUPLE */
+.couple{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+  margin:25px 0;
+}
+
+.character{
+  font-size:70px;
+  animation:bob 2.5s ease-in-out infinite;
+}
+
+.character:nth-child(3){animation-delay:.4s}
+
+.heart{
+  font-size:35px;
+  animation:beat 1.4s infinite;
+}
+
+@keyframes bob{
+  50%{transform:translateY(-9px)}
+}
+
+@keyframes beat{
+  50%{transform:scale(1.25)}
+}
+
+/* BOXES */
+.boxes{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:13px;
+  margin-top:25px;
+}
+
+.box{
+  border-radius:20px;
+  min-height:130px;
+  padding:18px 10px;
+  background:linear-gradient(145deg,#f9c9df,#e6a3c6);
+  color:#602b46;
+  cursor:pointer;
+  border:1px solid #ffffff70;
+  transition:.25s;
+}
+
+.box:hover{transform:translateY(-4px)}
+.box .icon{font-size:38px;margin-bottom:8px}
+.box .answer{display:none;font-weight:700;line-height:1.6}
+.box.open .front{display:none}
+.box.open .answer{display:block}
+
+/* ENVELOPES */
+.envelopes{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  margin:25px 0;
+}
+
+.env{
+  background:#fff4f8;
+  color:#7d3c5d;
+  border-radius:18px;
+  padding:17px 8px;
+  cursor:pointer;
+  transition:.25s;
+}
+.env:hover{transform:scale(1.04)}
+.env .emoji{font-size:42px}
+
+.message{
+  display:none;
+  margin-top:20px;
+  padding:22px;
+  background:#fff5f9;
+  color:#71354e;
+  border-radius:20px;
+  line-height:1.8;
+  font-size:18px;
+}
+.message.show{display:block;animation:enter .4s}
 
 /* CAKE */
-.cake{font-size:95px;cursor:pointer}
+.cake{
+  font-size:100px;
+  cursor:pointer;
+  margin:20px;
+  transition:.3s;
+}
+.cake:hover{transform:scale(1.08)}
+
+.footer-text{
+  font-size:14px;
+  color:#ffe9d1;
+  margin-top:18px;
+}
+
+@media(max-width:500px){
+  .glass{padding:24px 14px}
+  .frame img{height:240px}
+  .character{font-size:58px}
+  .boxes,.envelopes{gap:10px}
+  .box{padding:15px 7px;min-height:120px}
+}
 </style>
 </head>
 
@@ -140,195 +311,363 @@ button:hover{transform:scale(1.07)}
 <video id="bgVideo" autoplay muted loop playsinline>
   <source src="12.mp4" type="video/mp4">
 </video>
+
 <div class="overlay"></div>
-<div id="fx"></div>
+<div id="sparkles"></div>
 
-<!-- PAGE 1 -->
-<section class="page active" id="p1">
-<div class="content">
- <p class="small">A little surprise for someone very special...</p>
- <div style="font-size:55px;margin:15px">🎀 💗 🎀</div>
- <h1 class="big glow">HAPPY<br>BIRTHDAY</h1>
- <div class="nickname">MY DUDU ❤️</div>
- <p class="small">Made with love by your Bubu 🥹</p>
- <div class="nav">
-  <button onclick="next()">Open Your Surprise ✨</button>
- </div>
+<!-- SCENE 1 -->
+<section class="scene active" id="s1">
+<div class="wrap">
+<div class="glass">
+
+<p class="subtitle">A very special day for a very special person ✨</p>
+
+<h1>HAPPY<br>BIRTHDAY</h1>
+
+<div class="nickname">MY DUDU ❤️</div>
+
+<p>Made with love, just for you.</p>
+
+<button class="btn gold" onclick="nextScene()">
+OPEN YOUR SURPRISE ✨
+</button>
+
+</div>
 </div>
 </section>
 
-<!-- PAGE 2 -->
-<section class="page" id="p2">
-<div class="content">
- <p class="small">My favourite person in the whole world</p>
- <div class="nickname">MY LADI 💗</div>
+<!-- SCENE 2 -->
+<section class="scene" id="s2">
+<div class="wrap">
+<div class="glass">
 
- <div class="photos">
-  <div class="photo">
-   <img src="1.jpeg" alt="My Dudu">
-   <div class="caption">My handsome Dudu 🖤</div>
-  </div>
-  <div class="photo">
-   <img src="123.jpeg" alt="My love">
-   <div class="caption">My favourite face 🤍</div>
-  </div>
- </div>
+<p class="subtitle">My favourite face in the whole world</p>
 
- <p style="font-size:20px">Even miles away, you're my favourite. ❤️</p>
- <div class="nav">
-  <button class="back" onclick="prev()">← Back</button>
-  <button onclick="next()">Next Surprise →</button>
- </div>
+<div class="nickname">MY LADI 💗</div>
+
+<div class="gallery">
+
+<div class="frame">
+<img src="1.jpeg" alt="My Dudu">
+<div class="caption">MY HANDSOME DUDU 🖤</div>
+</div>
+
+<div class="frame">
+<img src="123.jpeg" alt="My favourite person">
+<div class="caption">MY FAVOURITE PERSON 🤍</div>
+</div>
+
+</div>
+
+<p>Distance can't change my favourite person.</p>
+
+<button class="btn" onclick="nextScene()">NEXT SURPRISE →</button>
+<button class="btn dark" onclick="previousScene()">← BACK</button>
+
+</div>
 </div>
 </section>
 
-<!-- PAGE 3 -->
-<section class="page" id="p3">
-<div class="content">
- <p class="small">Welcome to our tiny cute world 🥹</p>
- <h1 class="big">BUBU & DUDU</h1>
+<!-- SCENE 3 -->
+<section class="scene" id="s3">
+<div class="wrap">
+<div class="glass">
 
- <div class="bearworld">
-  <div class="bear">🐻</div>
-  <div class="heartbig">💗</div>
-  <div class="bear panda">🐼</div>
- </div>
+<p class="subtitle">Our little cute world 🧸</p>
 
- <div class="nickname">MY DIL ❤️</div>
- <p style="font-size:20px">
-  If I were there, I would steal all your hugs<br>
-  and give you a million kisses! 😘
- </p>
+<h1>BUBU & DUDU</h1>
 
- <div class="nav">
-  <button class="back" onclick="prev()">← Back</button>
-  <button onclick="next()">Next Surprise →</button>
- </div>
+<div class="couple">
+<div class="character">🐻</div>
+<div class="heart">♡</div>
+<div class="character">🐼</div>
+</div>
+
+<div class="nickname">MY DIL ❤️</div>
+
+<p>
+If I were there right now,<br>
+you would be getting the biggest hug!
+</p>
+
+<button class="btn" onclick="nextScene()">NEXT SURPRISE →</button>
+<button class="btn dark" onclick="previousScene()">← BACK</button>
+
+</div>
 </div>
 </section>
 
-<!-- PAGE 4 -->
-<section class="page" id="p4">
-<div class="content">
- <p class="small">Something only your Bubu made for you…</p>
- <h1 class="big">A SECRET FOR YOU 💌</h1>
+<!-- SCENE 4 -->
+<section class="scene" id="s4">
+<div class="wrap">
+<div class="glass">
 
- <div class="envelope" onclick="reveal()">💌</div>
- <p>Tap the envelope, my love!</p>
+<p class="subtitle">Little surprises, just for you</p>
+<h1>OPEN YOUR GIFTS 🎁</h1>
+<p>Tap any gift to discover what's inside.</p>
 
- <div class="secret" id="letter">
-  <div class="nickname">MY ALI JI ❤️</div>
-  <p>
-   I wish I could hug you today.<br>
-   I miss you, my Ladi.<br>
-   You are my favourite person.<br>
-   <b>Forever your Bubu. 💗</b>
-  </p>
- </div>
+<div class="boxes">
 
- <div class="nav">
-  <button class="back" onclick="prev()">← Back</button>
-  <button onclick="next()">Next Surprise →</button>
- </div>
+<div class="box" onclick="openBox(this)">
+<div class="front">
+<div class="icon">🎁</div>
+<strong>GIFT ONE</strong>
+</div>
+<div class="answer">
+Your Bubu owes you<br>1000 hugs! 🤗
+</div>
+</div>
+
+<div class="box" onclick="openBox(this)">
+<div class="front">
+<div class="icon">🌙</div>
+<strong>GIFT TWO</strong>
+</div>
+<div class="answer">
+May Allah protect you<br>every day. 🤲
+</div>
+</div>
+
+<div class="box" onclick="openBox(this)">
+<div class="front">
+<div class="icon">🧸</div>
+<strong>GIFT THREE</strong>
+</div>
+<div class="answer">
+You're my favourite<br>human ever!
+</div>
+</div>
+
+<div class="box" onclick="openBox(this)">
+<div class="front">
+<div class="icon">✨</div>
+<strong>GIFT FOUR</strong>
+</div>
+<div class="answer">
+You make my world<br>so much brighter.
+</div>
+</div>
+
+</div>
+
+<button class="btn" onclick="nextScene()">NEXT SURPRISE →</button>
+<button class="btn dark" onclick="previousScene()">← BACK</button>
+
+</div>
 </div>
 </section>
 
-<!-- PAGE 5 -->
-<section class="page" id="p5">
-<div class="content">
- <p class="small">One last thing, birthday boy…</p>
- <h1 class="big glow">MY DIL</h1>
- <div class="nickname">MY ALI JI 💖</div>
+<!-- SCENE 5 -->
+<section class="scene" id="s5">
+<div class="wrap">
+<div class="glass">
 
- <div class="cake" onclick="wish()">🎂</div>
- <p id="wishText" style="font-size:19px">
-  Tap your cake & make a wish! ✨
- </p>
+<p class="subtitle">Some words from your Bubu…</p>
+<h1>OPEN WHEN… 💌</h1>
 
- <div style="font-size:48px;margin:18px">💋 💗 💋</div>
- <p style="font-size:20px">
-  May Allah keep you happy, safe<br>
-  and bless you with everything beautiful.
- </p>
+<div class="envelopes">
 
- <h2 class="nickname">Alllbbuuuuuu ❤️</h2>
- <p>Forever your Bubu 🐻</p>
+<div class="env" onclick="letter('miss')">
+<div class="emoji">💌</div>
+<strong>YOU MISS ME</strong>
+</div>
 
- <div class="nav">
-  <button class="back" onclick="prev()">← Back</button>
-  <button onclick="restart()">Replay Our Love Story ↻</button>
- </div>
+<div class="env" onclick="letter('smile')">
+<div class="emoji">🌸</div>
+<strong>YOU NEED A SMILE</strong>
+</div>
+
+<div class="env" onclick="letter('hug')">
+<div class="emoji">🧸</div>
+<strong>YOU NEED A HUG</strong>
+</div>
+
+<div class="env" onclick="letter('dua')">
+<div class="emoji">🌙</div>
+<strong>MY DUAS FOR YOU</strong>
+</div>
+
+</div>
+
+<div class="message" id="letterMessage"></div>
+
+<button class="btn" onclick="nextScene()">NEXT SURPRISE →</button>
+<button class="btn dark" onclick="previousScene()">← BACK</button>
+
+</div>
+</div>
+</section>
+
+<!-- SCENE 6 -->
+<section class="scene" id="s6">
+<div class="wrap">
+<div class="glass">
+
+<p class="subtitle">Birthday boy, make a wish!</p>
+
+<h1>YOUR BIRTHDAY CAKE 🎂</h1>
+
+<div class="cake" onclick="cakeWish()">🎂</div>
+
+<p id="cakeMessage">Tap the cake and make your wish ✨</p>
+
+<div class="nickname">MY ALI JI ❤️</div>
+
+<p>
+May Allah bless you with happiness,<br>
+success, health and beautiful days.
+</p>
+
+<button class="btn gold" onclick="nextScene()">ONE LAST SURPRISE 💝</button>
+<button class="btn dark" onclick="previousScene()">← BACK</button>
+
+</div>
+</div>
+</section>
+
+<!-- FINAL SCENE -->
+<section class="scene" id="s7">
+<div class="wrap">
+<div class="glass">
+
+<p class="subtitle">This little website was made only for you</p>
+
+<h1>HAPPY BIRTHDAY</h1>
+
+<div class="nickname">MY DIL 💗</div>
+<div class="nickname">MY ALI JI</div>
+
+<div class="couple">
+<div class="character">🐻</div>
+<div class="heart">♡</div>
+<div class="character">🐼</div>
+</div>
+
+<p>
+I wish I could hug you today.<br>
+Until then, all my love is with you.
+</p>
+
+<h2>FOREVER YOUR BUBU ❤️</h2>
+
+<button class="btn gold" onclick="replay()">
+REPLAY OUR SURPRISE ↻
+</button>
+
+<button class="btn" onclick="replyWhatsApp()">
+REPLY TO YOUR BUBU 💌
+</button>
+
+<p class="footer-text">
+Made with love, just for my Dudu.
+</p>
+
+</div>
 </div>
 </section>
 
 <script>
-let current=1;
-const total=5;
 
-function showPage(n){
- document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
- document.getElementById('p'+n).classList.add('active');
+/* PAGE NAVIGATION */
+let current=1;
+const total=7;
+
+function showScene(n){
+ document.querySelectorAll('.scene').forEach(s=>s.classList.remove('active'));
+ document.getElementById('s'+n).classList.add('active');
  current=n;
  window.scrollTo({top:0,behavior:'smooth'});
- hearts(12);
-}
-function next(){if(current<total)showPage(current+1)}
-function prev(){if(current>1)showPage(current-1)}
-function restart(){showPage(1)}
-
-function reveal(){
- document.getElementById('letter').classList.toggle('show');
- hearts(30);
-}
-let wishes=0;
-function wish(){
- wishes++;
- document.getElementById('wishText').innerHTML=
- wishes===1?"Make a beautiful wish, my Dudu! ✨":
- wishes===2?"Blow the candles! 🕯️💨":
- "Wish granted! Sending you a million kisses! 😘❤️";
- hearts(30);
+ sparkles(10);
 }
 
-function hearts(num){
- const fx=document.getElementById('fx');
- for(let i=0;i<num;i++){
-  setTimeout(()=>{
-   let h=document.createElement('div');
-   h.className='float';
-   h.innerHTML=['💗','💕','✨','💋','❤️'][Math.floor(Math.random()*5)];
-   h.style.left=Math.random()*100+'vw';
-   h.style.fontSize=(18+Math.random()*28)+'px';
-   h.style.animationDuration=(4+Math.random()*4)+'s';
-   fx.appendChild(h);
-   setTimeout(()=>h.remove(),8000);
-  },i*70);
- }
+function nextScene(){
+ if(current<total)showScene(current+1);
 }
-setInterval(()=>hearts(1),1700);
 
-/* Slow video playback */
+function previousScene(){
+ if(current>1)showScene(current-1);
+}
+
+function replay(){
+ showScene(1);
+}
+
+/* VIDEO SPEED 0.45 */
 const video=document.getElementById('bgVideo');
 video.addEventListener('loadedmetadata',()=>{
- video.playbackRate=0.55;
+ video.playbackRate=0.45;
 });
-video.playbackRate=0.55;
-</script>
+video.playbackRate=0.45;
 
+/* GIFTS */
+function openBox(box){
+ box.classList.toggle('open');
+ sparkles(15);
+}
+
+/* ENVELOPES */
+function letter(type){
+ const texts={
+  miss:"My Dudu, I wish I could be beside you right now. Until then, imagine your Bubu holding your hand. ❤️",
+  smile:"Imagine Bubu doing a silly little dance just to make you smile! 🐻💕",
+  hug:"Sending the tightest hug ever to my Ladi. I wish I could hold you for real. 🤗",
+  dua:"May Allah always protect you, bless your life, give you peace, success and endless happiness. Ameen. 🌙"
+ };
+
+ const box=document.getElementById('letterMessage');
+ box.innerHTML=texts[type];
+ box.classList.add('show');
+ sparkles(18);
+}
+
+/* CAKE */
+let cakeCount=0;
+function cakeWish(){
+ cakeCount++;
+ const text=document.getElementById('cakeMessage');
+
+ if(cakeCount===1)
+  text.innerHTML="Make your beautiful wish, my Dudu! ✨";
+ else if(cakeCount===2)
+  text.innerHTML="Blow the candles! 🕯️";
+ else
+  text.innerHTML="Wish granted! Happy Birthday, my love! ❤️";
+
+ sparkles(20);
+}
+
+/* SPARKLES ONLY—NO KISS EFFECTS */
+function sparkles(num){
+ const layer=document.getElementById('sparkles');
+
+ for(let i=0;i<num;i++){
+  setTimeout(()=>{
+   const s=document.createElement('div');
+   s.className='spark';
+   s.innerHTML=['✦','✧','⋆','♡'][Math.floor(Math.random()*4)];
+   s.style.left=Math.random()*100+'vw';
+   s.style.top=Math.random()*100+'vh';
+   s.style.fontSize=(12+Math.random()*18)+'px';
+   s.style.animationDuration=(3+Math.random()*3)+'s';
+
+   layer.appendChild(s);
+   setTimeout(()=>s.remove(),6000);
+  },i*80);
+ }
+}
+
+setInterval(()=>sparkles(1),1700);
+
+/* WHATSAPP REPLY */
+function replyWhatsApp(){
+ const phone="923348147509";
+ const message=" ❤️ ";
+
+ const url="https://wa.me/"+phone+"?text="+encodeURIComponent(message);
+
+ window.open(url,"_blank");
+}
+
+</script>
 </body>
 </html>
-<script>
-function replayAndWhatsApp() {
-  const phone = "923348147509";
-  const message = " ❤️ Bubu Ji 😘";
-
-  showPage(1);
-
-  setTimeout(() => {
-    window.open(
-      "https://wa.me/" + phone + "?text=" + encodeURIComponent(message),
-      "_blank"
-    );
-  }, 3000);
-}
-</script>

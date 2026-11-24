@@ -1,1 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Dudu ❤️</title>
 
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:'Segoe UI',sans-serif;
+  background:#130914;
+  color:white;
+  overflow-x:hidden;
+}
+#bgVideo{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-3;
+}
+.overlay{
+  position:fixed;
+  inset:0;
+  background:linear-gradient(135deg,rgba(20,0,15,.78),rgba(65,0,35,.52));
+  z-index:-2;
+}
+.page{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:25px 16px;
+  text-align:center;
+}
+.glass{
+  width:min(680px,100%);
+  padding:30px 22px;
+  background:rgba(255,255,255,.09);
+  border:1px solid rgba(255,255,255,.22);
+  backdrop-filter:blur(15px);
+  border-radius:28px;
+  box-shadow:0 0 40px #ff4b9630;
+}
+h1{
+  font-size:clamp(35px,8vw,65px);
+  color:#ffb8d8;
+  text-shadow:0 0 20px #ff3f91;
+}
+h2{color:#ffd0e7;margin:14px 0}
+p{line-height:1.8;font-size:16px}
+button{
+  border:0;
+  padding:14px 23px;
+  margin:10px 5px;
+  border-radius:50px;
+  background:linear-gradient(135deg,#ff5da2,#ff9bc9);
+  color:#fff;
+  font-size:15px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 0 20px #ff5da255;
+  transition:.3s;
+}
+button:hover{transform:scale(1.08)}
+.hidden{display:none!important}
+
+/* cute bears */
+.bears{
+  font-size:65px;
+  animation:bounce 2s infinite;
+  margin:15px;
+}
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+
+/* photo cards */
+.photos{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:18px;
+  margin:25px 0;
+}
+.photo{
+  width:min(260px,100%);
+  padding:10px;
+  background:#fff;
+  color:#a52a5b;
+  border-radius:18px;
+  transform:rotate(-3deg);
+  box-shadow:0 10px 30px #0005;
+  transition:.4s;
+}
+.photo:nth-child(2){transform:rotate(3deg)}
+.photo:hover{transform:rotate(0) scale(1.06)}
+.photo img{
+  width:100%;
+  height:300px;
+  object-fit:cover;
+  border-radius:12px;
+}
+.caption{padding:10px;font-weight:bold}
+
+/* floating hearts */
+.heart{
+  position:fixed;
+  bottom:-30px;
+  animation:floatUp linear forwards;
+  pointer-events:none;
+  z-index:10;
+}
+@keyframes floatUp{
+  to{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+
+/* surprise letter */
+#letter{
+  background:rgba(255,220,238,.15);
+  border:1px solid #ffb8d8;
+  border-radius:20px;
+  padding:20px;
+  margin-top:20px;
+  animation:appear .7s;
+}
+@keyframes appear{
+  from{opacity:0;transform:scale(.8)}
+  to{opacity:1;transform:scale(1)}
+}
+.small{font-size:14px;color:#ffe0ef}
+</style>
+</head>
+
+<body>
+
+<!-- Your video background -->
+<video id="bgVideo" autoplay muted loop playsinline>
+  <source src="12.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<!-- FIRST SCREEN -->
+<section class="page" id="home">
+  <div class="glass">
+    <div class="bears">🐻‍❄️ 💗 🐼</div>
+
+    <p>Someone very special was born today...</p>
+
+    <h1>Happy Birthday</h1>
+    <h2>MY DUDU ❤️</h2>
+
+    <p class="small">
+      A little surprise from your Bubu, made just for you.
+    </p>
+
+    <button onclick="startSurprise()">Open Your Surprise 🎁</button>
+  </div>
+</section>
+
+<!-- SECOND SCREEN -->
+<section class="page hidden" id="surprise">
+  <div class="glass">
+
+    <div class="bears">🐼 🫶 🐻</div>
+
+    <h1>My Ladi ❤️</h1>
+
+    <p>
+      Happy Birthday, my favourite person!<br>
+      My Dudu • My Ladi • My Dil • My Ali Ji 🥹
+    </p>
+
+    <div class="photos">
+
+      <div class="photo">
+        <img src="1.jpeg" alt="My favourite person">
+        <div class="caption">My handsome Dudu ❤️</div>
+      </div>
+
+      <div class="photo">
+        <img src="123.jpeg" alt="My love">
+        <div class="caption">My forever favourite 🥹</div>
+      </div>
+
+    </div>
+
+    <p>
+      Miles apart, but always close to my heart. 💗
+    </p>
+
+    <button onclick="showLetter()">Open My Little Letter 💌</button>
+
+    <div id="letter" class="hidden">
+      <h2>To My Dudu ❤️</h2>
+
+      <p>
+        I wish I could hug you today.<br>
+        I miss you, my Ladi.<br>
+        You are my favourite person<br>
+        and my forever happiness. 🥹
+      </p>
+
+      <h2>Love you, My Ali Ji! 💗</h2>
+    </div>
+
+    <br>
+
+    <button onclick="kiss()">Send You Kisses 😘</button>
+
+    <p id="kissText" class="hidden">
+      Muaaahhh! 😘😘😘<br>
+      A million kisses for my Dudu! ❤️
+    </p>
+
+  </div>
+</section>
+
+<script>
+function startSurprise(){
+  document.getElementById("home").classList.add("hidden");
+  document.getElementById("surprise").classList.remove("hidden");
+  window.scrollTo(0,0);
+  hearts();
+}
+
+function showLetter(){
+  document.getElementById("letter").classList.remove("hidden");
+  hearts();
+}
+
+function kiss(){
+  document.getElementById("kissText").classList.remove("hidden");
+  hearts();
+}
+
+/* Floating hearts effect */
+function hearts(){
+  for(let i=0;i<35;i++){
+    setTimeout(()=>{
+      let h=document.createElement("div");
+      h.className="heart";
+      h.innerHTML=["❤️","💕","💗","💖","😘","✨"][Math.floor(Math.random()*6)];
+      h.style.left=Math.random()*100+"vw";
+      h.style.fontSize=(18+Math.random()*25)+"px";
+      h.style.animationDuration=(3+Math.random()*4)+"s";
+      document.body.appendChild(h);
+      setTimeout(()=>h.remove(),7000);
+    },i*100);
+  }
+}
+
+/* Gentle hearts continuously */
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML=["💗","💕","✨"][Math.floor(Math.random()*3)];
+  h.style.left=Math.random()*100+"vw";
+  h.style.fontSize="20px";
+  h.style.animationDuration="6s";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),6000);
+},700);
+</script>
+
+</body>
+</html>

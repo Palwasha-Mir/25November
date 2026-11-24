@@ -3,270 +3,393 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday My Dudu ❤️</title>
+<title>For My Dudu ❤️</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-  font-family:'Segoe UI',sans-serif;
-  background:#130914;
-  color:white;
-  overflow-x:hidden;
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+ --pink:#ffb8d9;--rose:#ff5e9f;--cream:#fff2f7;
 }
-#bgVideo{
-  position:fixed;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:-3;
+body{
+ font-family:Georgia,'Segoe UI',sans-serif;
+ background:#170d17;color:white;min-height:100vh;
+ overflow-x:hidden;
+}
+#videoBg{
+ position:fixed;inset:0;width:100%;height:100%;
+ object-fit:contain;object-position:center;
+ background:#100914;z-index:-3;
 }
 .overlay{
-  position:fixed;
-  inset:0;
-  background:linear-gradient(135deg,rgba(20,0,15,.78),rgba(65,0,35,.52));
-  z-index:-2;
+ position:fixed;inset:0;z-index:-2;
+ background:linear-gradient(140deg,rgba(18,5,18,.76),
+ rgba(45,7,33,.63),rgba(10,7,23,.76));
 }
-.page{
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  padding:25px 16px;
-  text-align:center;
-}
-.glass{
-  width:min(680px,100%);
-  padding:30px 22px;
-  background:rgba(255,255,255,.09);
-  border:1px solid rgba(255,255,255,.22);
-  backdrop-filter:blur(15px);
-  border-radius:28px;
-  box-shadow:0 0 40px #ff4b9630;
-}
-h1{
-  font-size:clamp(35px,8vw,65px);
-  color:#ffb8d8;
-  text-shadow:0 0 20px #ff3f91;
-}
-h2{color:#ffd0e7;margin:14px 0}
-p{line-height:1.8;font-size:16px}
-button{
-  border:0;
-  padding:14px 23px;
-  margin:10px 5px;
-  border-radius:50px;
-  background:linear-gradient(135deg,#ff5da2,#ff9bc9);
-  color:#fff;
-  font-size:15px;
-  font-weight:bold;
-  cursor:pointer;
-  box-shadow:0 0 20px #ff5da255;
-  transition:.3s;
-}
-button:hover{transform:scale(1.08)}
-.hidden{display:none!important}
-
-/* cute bears */
-.bears{
-  font-size:65px;
-  animation:bounce 2s infinite;
-  margin:15px;
-}
-@keyframes bounce{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-12px)}
-}
-
-/* photo cards */
-.photos{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:18px;
-  margin:25px 0;
-}
-.photo{
-  width:min(260px,100%);
-  padding:10px;
-  background:#fff;
-  color:#a52a5b;
-  border-radius:18px;
-  transform:rotate(-3deg);
-  box-shadow:0 10px 30px #0005;
-  transition:.4s;
-}
-.photo:nth-child(2){transform:rotate(3deg)}
-.photo:hover{transform:rotate(0) scale(1.06)}
-.photo img{
-  width:100%;
-  height:300px;
-  object-fit:cover;
-  border-radius:12px;
-}
-.caption{padding:10px;font-weight:bold}
-
-/* floating hearts */
+#particles{position:fixed;inset:0;pointer-events:none;z-index:2}
 .heart{
-  position:fixed;
-  bottom:-30px;
-  animation:floatUp linear forwards;
-  pointer-events:none;
-  z-index:10;
+ position:absolute;bottom:-40px;animation:float linear forwards;
+ opacity:.8;
 }
-@keyframes floatUp{
-  to{transform:translateY(-110vh) rotate(360deg);opacity:0}
+@keyframes float{
+ to{transform:translateY(-110vh) rotate(360deg);opacity:0}
 }
-
-/* surprise letter */
-#letter{
-  background:rgba(255,220,238,.15);
-  border:1px solid #ffb8d8;
-  border-radius:20px;
-  padding:20px;
-  margin-top:20px;
-  animation:appear .7s;
+header{
+ position:sticky;top:0;z-index:10;
+ padding:12px;text-align:center;
+ background:#170d17b9;backdrop-filter:blur(15px);
+ border-bottom:1px solid #ffffff20;
 }
-@keyframes appear{
-  from{opacity:0;transform:scale(.8)}
-  to{opacity:1;transform:scale(1)}
+.logo{font-size:20px;color:var(--pink);font-weight:bold}
+nav{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-top:10px}
+nav button{
+ background:#ffffff12;border:1px solid #ffffff30;
+ color:white;padding:9px 12px;border-radius:20px;
+ font-size:12px;cursor:pointer;
 }
-.small{font-size:14px;color:#ffe0ef}
+nav button.active{background:#ff5e9f;color:white;border-color:#ff5e9f}
+main{max-width:850px;margin:auto;padding:25px 15px 80px}
+.page{display:none;animation:fade .5s ease}
+.page.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.card{
+ background:#ffffff10;border:1px solid #ffffff25;
+ backdrop-filter:blur(18px);border-radius:26px;
+ padding:25px 18px;margin:14px 0;
+ box-shadow:0 15px 50px #0003;
+}
+.center{text-align:center}
+h1{font-size:clamp(34px,8vw,62px);color:#ffc3df;margin:12px 0}
+h2{font-size:26px;color:#ffd2e7;margin:12px 0}
+h3{color:#ffc1df;margin-bottom:10px}
+p{line-height:1.8;margin:9px 0}
+.small{font-size:13px;color:#ffe1ef}
+button.action{
+ background:linear-gradient(135deg,#ff5e9f,#f9a4cd);
+ color:#fff;border:0;border-radius:30px;padding:13px 20px;
+ margin:8px;cursor:pointer;font-weight:bold;
+ box-shadow:0 5px 20px #ff5e9f40;transition:.25s;
+}
+button.action:hover{transform:translateY(-2px) scale(1.04)}
+button.secondary{background:#ffffff16;border:1px solid #ffffff35}
+.bears{
+ display:flex;justify-content:center;align-items:center;gap:10px;
+ font-size:70px;margin:12px 0;
+ animation:bounce 3s ease-in-out infinite;
+}
+@keyframes bounce{50%{transform:translateY(-8px)}}
+.gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin:22px 0}
+.photo{
+ width:min(270px,100%);background:#fff;padding:9px;
+ border-radius:16px;color:#a34270;transform:rotate(-2deg);
+ box-shadow:0 12px 30px #0005;
+}
+.photo:nth-child(2){transform:rotate(2deg)}
+.photo img{width:100%;height:330px;object-fit:cover;border-radius:10px}
+.caption{text-align:center;padding:10px;font-weight:bold}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.secret{
+ background:linear-gradient(140deg,#ffb4d7,#c86aa1);
+ color:#48162f;border-radius:20px;padding:20px;
+ cursor:pointer;text-align:center;min-height:115px;
+ border:1px solid #ffffff50;transition:.25s;
+}
+.secret:hover{transform:scale(1.03)}
+.secret .icon{font-size:35px}
+.secret .inside{display:none;margin-top:12px;font-size:14px;line-height:1.7}
+.secret.open .inside{display:block}
+.secret.open .closed{display:none}
+.envelope{
+ font-size:60px;cursor:pointer;display:inline-block;
+ transition:.3s;
+}
+.envelope:hover{transform:rotate(-8deg) scale(1.1)}
+.reveal{display:none;margin-top:15px;padding:17px;background:#ffffff12;border-radius:17px}
+.reveal.show{display:block;animation:fade .5s}
+.letter{
+ background:#fff1f7;color:#8b305c;border-radius:18px;padding:20px;
+ line-height:1.8;
+}
+.quiz-options button{display:block;width:100%;max-width:360px;margin:10px auto}
+#quizAnswer{color:#ffd2e7;font-weight:bold;min-height:30px}
+.cake{font-size:90px;cursor:pointer;transition:.3s}
+.cake:hover{transform:scale(1.1)}
+footer{text-align:center;color:#ffd4e9;padding:30px;font-size:14px}
+@media(max-width:600px){
+ header{padding:10px 5px}
+ nav button{padding:8px 10px;font-size:11px}
+ main{padding:15px 12px 60px}
+ .card{padding:22px 15px}
+ .photo img{height:280px}
+ .grid{grid-template-columns:1fr 1fr}
+}
 </style>
 </head>
 
 <body>
 
-<!-- Your video background -->
-<video id="bgVideo" autoplay muted loop playsinline>
+<!-- Background video -->
+<video id="videoBg" autoplay muted loop playsinline>
   <source src="12.mp4" type="video/mp4">
 </video>
 
 <div class="overlay"></div>
+<div id="particles"></div>
 
-<!-- FIRST SCREEN -->
-<section class="page" id="home">
-  <div class="glass">
-    <div class="bears">🐻‍❄️ 💗 🐼</div>
+<header>
+  <div class="logo">♡ A LITTLE WORLD FOR MY DUDU ♡</div>
+  <nav>
+    <button class="active" onclick="go('welcome',this)">Home 🏠</button>
+    <button onclick="go('memories',this)">Memories 📸</button>
+    <button onclick="go('secrets',this)">Secret Boxes 🎁</button>
+    <button onclick="go('love',this)">Love Letters 💌</button>
+    <button onclick="go('game',this)">Fun Zone 🎀</button>
+  </nav>
+</header>
 
-    <p>Someone very special was born today...</p>
+<main>
 
-    <h1>Happy Birthday</h1>
-    <h2>MY DUDU ❤️</h2>
+<!-- PAGE 1 -->
+<section class="page active" id="welcome">
+ <div class="card center">
+   <div class="bears">🐻‍❄️ 💗 🐼</div>
+   <p>Somebody very special was born today...</p>
+   <h1>Happy Birthday</h1>
+   <h2>MY DUDU ❤️</h2>
+   <p class="small">Your Bubu has secretly made something for you.</p>
+   <button class="action" onclick="go('memories')">Enter Our Little World ✨</button>
+ </div>
 
-    <p class="small">
-      A little surprise from your Bubu, made just for you.
-    </p>
-
-    <button onclick="startSurprise()">Open Your Surprise 🎁</button>
-  </div>
+ <div class="card center">
+   <h2>🌷 Today's Main Character</h2>
+   <p>My Ladi. My Dil. My Ali Ji.</p>
+   <p>Officially the cutest birthday boy in my world. 🥹</p>
+ </div>
 </section>
 
-<!-- SECOND SCREEN -->
-<section class="page hidden" id="surprise">
-  <div class="glass">
+<!-- PAGE 2 -->
+<section class="page" id="memories">
+ <div class="card center">
+   <h1>My Favourite Human 📸</h1>
+   <p>Warning: looking at you makes your Bubu miss you more. ❤️</p>
 
-    <div class="bears">🐼 🫶 🐻</div>
+   <div class="gallery">
+     <div class="photo">
+       <img src="1.jpeg" alt="My Dudu">
+       <div class="caption">My handsome Dudu 🖤</div>
+     </div>
+     <div class="photo">
+       <img src="123.jpeg" alt="My favourite">
+       <div class="caption">My forever favourite 🤍</div>
+     </div>
+   </div>
 
-    <h1>My Ladi ❤️</h1>
-
-    <p>
-      Happy Birthday, my favourite person!<br>
-      My Dudu • My Ladi • My Dil • My Ali Ji 🥹
-    </p>
-
-    <div class="photos">
-
-      <div class="photo">
-        <img src="1.jpeg" alt="My favourite person">
-        <div class="caption">My handsome Dudu ❤️</div>
-      </div>
-
-      <div class="photo">
-        <img src="123.jpeg" alt="My love">
-        <div class="caption">My forever favourite 🥹</div>
-      </div>
-
-    </div>
-
-    <p>
-      Miles apart, but always close to my heart. 💗
-    </p>
-
-    <button onclick="showLetter()">Open My Little Letter 💌</button>
-
-    <div id="letter" class="hidden">
-      <h2>To My Dudu ❤️</h2>
-
-      <p>
-        I wish I could hug you today.<br>
-        I miss you, my Ladi.<br>
-        You are my favourite person<br>
-        and my forever happiness. 🥹
-      </p>
-
-      <h2>Love you, My Ali Ji! 💗</h2>
-    </div>
-
-    <br>
-
-    <button onclick="kiss()">Send You Kisses 😘</button>
-
-    <p id="kissText" class="hidden">
-      Muaaahhh! 😘😘😘<br>
-      A million kisses for my Dudu! ❤️
-    </p>
-
-  </div>
+   <div class="bears">🐼 💞 🐻‍❄️</div>
+   <p>Even miles away, you're still my favourite place.</p>
+   <button class="action" onclick="go('secrets')">Find Your Secret Gifts 🎁</button>
+ </div>
 </section>
+
+<!-- PAGE 3 -->
+<section class="page" id="secrets">
+ <div class="card center">
+   <h1>Secret Gift Boxes 🎁</h1>
+   <p>Choose any box. Each one has a little surprise from Bubu.</p>
+
+   <div class="grid">
+     <div class="secret" onclick="openBox(this)">
+       <div class="closed"><div class="icon">🎁</div><b>Gift 1</b><br>Tap to open</div>
+       <div class="inside">A lifetime supply of hugs from your Bubu. 🤗❤️</div>
+     </div>
+
+     <div class="secret" onclick="openBox(this)">
+       <div class="closed"><div class="icon">💋</div><b>Gift 2</b><br>Tap to open</div>
+       <div class="inside">Muaaah! 1000 kisses for my Dudu! 😘</div>
+     </div>
+
+     <div class="secret" onclick="openBox(this)">
+       <div class="closed"><div class="icon">🧸</div><b>Gift 3</b><br>Tap to open</div>
+       <div class="inside">You are my favourite teddy bear. I wish I could cuddle you right now!</div>
+     </div>
+
+     <div class="secret" onclick="openBox(this)">
+       <div class="closed"><div class="icon">🌙</div><b>Gift 4</b><br>Tap to open</div>
+       <div class="inside">My dua: Allah always protects you and fills your life with happiness. Ameen. 🤲</div>
+     </div>
+
+     <div class="secret" onclick="openBox(this)">
+       <div class="closed"><div class="icon">💌</div><b>Gift 5</b><br>Tap to open</div>
+       <div class="inside">No distance can change how much I love you. My heart is always with you.</div>
+     </div>
+
+     <div class="secret" onclick="openBox(this)">
+       <div class="closed"><div class="icon">🔒</div><b>Gift 6</b><br>Don't touch?</div>
+       <div class="inside">You touched it! 😂 Now you owe your Bubu one BIG hug!</div>
+     </div>
+   </div>
+ </div>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page" id="love">
+ <div class="card center">
+   <h1>Open When… 💌</h1>
+   <p>Choose an envelope, my love.</p>
+
+   <div class="grid">
+     <div class="secret" onclick="openLetter('miss')">
+       <div class="icon">💌</div>Open when you miss me
+     </div>
+     <div class="secret" onclick="openLetter('sad')">
+       <div class="icon">💕</div>Open when you're sad
+     </div>
+     <div class="secret" onclick="openLetter('smile')">
+       <div class="icon">🌸</div>Open when you need a smile
+     </div>
+     <div class="secret" onclick="openLetter('birthday')">
+       <div class="icon">🎂</div>Birthday envelope
+     </div>
+   </div>
+
+   <div class="reveal" id="letterReveal">
+     <div class="envelope">💌</div>
+     <div class="letter" id="letterContent"></div>
+   </div>
+ </div>
+</section>
+
+<!-- PAGE 5 -->
+<section class="page" id="game">
+ <div class="card center">
+   <h1>Bubu & Dudu Fun Zone 🎀</h1>
+   <div class="bears">🐼 🥰 🐻‍❄️</div>
+
+   <h2>How much does Bubu love Dudu?</h2>
+   <div class="quiz-options">
+     <button class="action" onclick="answer('little')">A little bit ❤️</button>
+     <button class="action" onclick="answer('lot')">A LOTTT ❤️❤️❤️</button>
+     <button class="action" onclick="answer('unlimited')">More than the universe 🌌</button>
+   </div>
+   <p id="quizAnswer"></p>
+
+   <hr style="border:0;border-top:1px solid #ffffff25;margin:25px 0">
+
+   <h2>Don't touch this button 👀</h2>
+   <button class="action" onclick="dontTouch()">DON'T TOUCH! 🚫</button>
+   <div id="dontResult" class="reveal">
+     <h2>HAHA I KNEW IT! 😂</h2>
+     <p>Now send your Bubu a flying kiss! 😘💗</p>
+   </div>
+
+   <hr style="border:0;border-top:1px solid #ffffff25;margin:25px 0">
+
+   <h2>Birthday Cake 🎂</h2>
+   <div class="cake" onclick="cake()">🎂</div>
+   <p id="cakeText">Tap the cake to make a birthday wish!</p>
+
+   <button class="action" onclick="go('final')">One Last Surprise 💝</button>
+ </div>
+</section>
+
+<!-- PAGE 6 -->
+<section class="page" id="final">
+ <div class="card center">
+   <div class="bears">🐻‍❄️ 💗 🐼</div>
+   <h1>Happy Birthday, My Ali Ji!</h1>
+   <h2>My Dudu. My Ladi. My Dil. ❤️</h2>
+
+   <p>
+    I wish I could hug you today.<br>
+    Until then, all my love is travelling to you.
+   </p>
+
+   <div style="font-size:55px;margin:20px">💋 💗 🎂 💋</div>
+
+   <p>
+    May Allah protect you, bless you, and always keep you smiling.<br>
+    I love you endlessly.
+   </p>
+
+   <h2>Forever Your Bubu 🐼❤️</h2>
+   <button class="action" onclick="hearts(80)">Send 80 Hearts 💕</button>
+   <button class="action secondary" onclick="go('welcome')">Replay Our Surprise ↻</button>
+ </div>
+</section>
+
+</main>
+
+<footer>
+  Made with lots of love by your Bubu ❤️
+</footer>
 
 <script>
-function startSurprise(){
-  document.getElementById("home").classList.add("hidden");
-  document.getElementById("surprise").classList.remove("hidden");
-  window.scrollTo(0,0);
-  hearts();
+function go(id,btn){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ const page=document.getElementById(id);
+ if(page)page.classList.add('active');
+ document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
+ if(btn)btn.classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
+ hearts(12);
 }
 
-function showLetter(){
-  document.getElementById("letter").classList.remove("hidden");
-  hearts();
+function openBox(box){
+ box.classList.toggle('open');
+ hearts(15);
 }
 
-function kiss(){
-  document.getElementById("kissText").classList.remove("hidden");
-  hearts();
+function openLetter(type){
+ const messages={
+  miss:"My Dudu, if you miss me, look at the moon tonight. Somewhere under the same moon, your Bubu is missing you too. ❤️🌙",
+  sad:"My Ladi, please remember you're loved, you're precious, and you're never alone. Your Bubu is always in your corner. 🤗",
+  smile:"Imagine Bubu running to Dudu with tiny legs and giving the biggest hug ever! 🐼💞🐻‍❄️",
+  birthday:"Happy Birthday, my Dil! You are one of the most beautiful blessings in my life. May Allah always keep you happy. ❤️🎂"
+ };
+ document.getElementById('letterContent').innerHTML=messages[type];
+ document.getElementById('letterReveal').classList.add('show');
+ hearts(25);
 }
 
-/* Floating hearts effect */
-function hearts(){
-  for(let i=0;i<35;i++){
-    setTimeout(()=>{
-      let h=document.createElement("div");
-      h.className="heart";
-      h.innerHTML=["❤️","💕","💗","💖","😘","✨"][Math.floor(Math.random()*6)];
-      h.style.left=Math.random()*100+"vw";
-      h.style.fontSize=(18+Math.random()*25)+"px";
-      h.style.animationDuration=(3+Math.random()*4)+"s";
-      document.body.appendChild(h);
-      setTimeout(()=>h.remove(),7000);
-    },i*100);
-  }
+function answer(type){
+ const text={
+  little:"Wrong answer! 😂 Bubu loves Dudu INFINITY times! ♾️❤️",
+  lot:"Correct! But actually… even MORE than that! 🥹💕",
+  unlimited:"Correct answer! Bubu's love has no limit! ♾️💗"
+ };
+ document.getElementById('quizAnswer').innerHTML=text[type];
+ hearts(20);
 }
 
-/* Gentle hearts continuously */
-setInterval(()=>{
-  let h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML=["💗","💕","✨"][Math.floor(Math.random()*3)];
-  h.style.left=Math.random()*100+"vw";
-  h.style.fontSize="20px";
-  h.style.animationDuration="6s";
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),6000);
-},700);
+function dontTouch(){
+ document.getElementById('dontResult').classList.add('show');
+ hearts(30);
+}
+
+let cakeCount=0;
+function cake(){
+ cakeCount++;
+ const txt=document.getElementById('cakeText');
+ if(cakeCount===1)txt.innerHTML="Make a wish, my Dudu! ✨";
+ else if(cakeCount===2)txt.innerHTML="Blowww the candles! 🕯️💨";
+ else txt.innerHTML="Wish granted! A million kisses from Bubu! 😘❤️";
+ hearts(25);
+}
+
+function hearts(count=15){
+ const layer=document.getElementById('particles');
+ for(let i=0;i<count;i++){
+  setTimeout(()=>{
+   const h=document.createElement('div');
+   h.className='heart';
+   h.innerHTML=['💗','💕','❤️','✨','😘'][Math.floor(Math.random()*5)];
+   h.style.left=Math.random()*100+'vw';
+   h.style.fontSize=(16+Math.random()*25)+'px';
+   h.style.animationDuration=(4+Math.random()*4)+'s';
+   layer.appendChild(h);
+   setTimeout(()=>h.remove(),8000);
+  },i*50);
+ }
+}
+setInterval(()=>hearts(1),1300);
 </script>
-
 </body>
 </html>

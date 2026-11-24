@@ -6,390 +6,314 @@
 <title>For My Dudu ❤️</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{
- --pink:#ffb8d9;--rose:#ff5e9f;--cream:#fff2f7;
-}
+*{margin:0;box-sizing:border-box}
 body{
- font-family:Georgia,'Segoe UI',sans-serif;
- background:#170d17;color:white;min-height:100vh;
- overflow-x:hidden;
+  background:#160c17;color:#fff;
+  font-family:Georgia,serif;
+  min-height:100vh;overflow-x:hidden
 }
-#videoBg{
- position:fixed;inset:0;width:100%;height:100%;
- object-fit:contain;object-position:center;
- background:#100914;z-index:-3;
+
+/* VIDEO BACKGROUND */
+#bgVideo{
+  position:fixed;inset:0;width:100%;height:100%;
+  object-fit:contain;background:#100813;
+  z-index:-3
 }
 .overlay{
- position:fixed;inset:0;z-index:-2;
- background:linear-gradient(140deg,rgba(18,5,18,.76),
- rgba(45,7,33,.63),rgba(10,7,23,.76));
+  position:fixed;inset:0;z-index:-2;
+  background:rgba(25,8,21,.25)
 }
-#particles{position:fixed;inset:0;pointer-events:none;z-index:2}
-.heart{
- position:absolute;bottom:-40px;animation:float linear forwards;
- opacity:.8;
+
+/* FLOATING EFFECTS */
+#fx{position:fixed;inset:0;pointer-events:none;z-index:5}
+.float{
+ position:absolute;bottom:-40px;
+ animation:rise linear forwards
 }
-@keyframes float{
+@keyframes rise{
  to{transform:translateY(-110vh) rotate(360deg);opacity:0}
 }
-header{
- position:sticky;top:0;z-index:10;
- padding:12px;text-align:center;
- background:#170d17b9;backdrop-filter:blur(15px);
- border-bottom:1px solid #ffffff20;
+.glow{animation:glow 2s infinite alternate}
+@keyframes glow{
+ from{text-shadow:0 0 8px #ff8bc2}
+ to{text-shadow:0 0 30px #ff43a1,0 0 50px #ff43a1}
 }
-.logo{font-size:20px;color:var(--pink);font-weight:bold}
-nav{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-top:10px}
-nav button{
- background:#ffffff12;border:1px solid #ffffff30;
- color:white;padding:9px 12px;border-radius:20px;
- font-size:12px;cursor:pointer;
+
+/* PAGES */
+.page{
+ min-height:100vh;padding:25px 15px;
+ display:none;align-items:center;justify-content:center;
+ text-align:center;animation:appear .6s
 }
-nav button.active{background:#ff5e9f;color:white;border-color:#ff5e9f}
-main{max-width:850px;margin:auto;padding:25px 15px 80px}
-.page{display:none;animation:fade .5s ease}
-.page.active{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.card{
- background:#ffffff10;border:1px solid #ffffff25;
- backdrop-filter:blur(18px);border-radius:26px;
- padding:25px 18px;margin:14px 0;
- box-shadow:0 15px 50px #0003;
+.page.active{display:flex}
+@keyframes appear{
+ from{opacity:0;transform:translateY(20px)}
+ to{opacity:1;transform:translateY(0)}
 }
-.center{text-align:center}
-h1{font-size:clamp(34px,8vw,62px);color:#ffc3df;margin:12px 0}
-h2{font-size:26px;color:#ffd2e7;margin:12px 0}
-h3{color:#ffc1df;margin-bottom:10px}
-p{line-height:1.8;margin:9px 0}
-.small{font-size:13px;color:#ffe1ef}
-button.action{
- background:linear-gradient(135deg,#ff5e9f,#f9a4cd);
- color:#fff;border:0;border-radius:30px;padding:13px 20px;
- margin:8px;cursor:pointer;font-weight:bold;
- box-shadow:0 5px 20px #ff5e9f40;transition:.25s;
+.content{width:min(720px,100%)}
+.small{font-size:15px;color:#ffe0ee}
+.big{
+ font-size:clamp(42px,10vw,78px);
+ color:#ffc2df;line-height:1.15;
+ margin:15px 0
 }
-button.action:hover{transform:translateY(-2px) scale(1.04)}
-button.secondary{background:#ffffff16;border:1px solid #ffffff35}
-.bears{
- display:flex;justify-content:center;align-items:center;gap:10px;
- font-size:70px;margin:12px 0;
- animation:bounce 3s ease-in-out infinite;
+.nickname{
+ font-size:clamp(35px,8vw,60px);
+ color:#ffb2d6;font-weight:bold;
+ text-shadow:0 0 20px #ff54a3;
+ margin:14px 0
 }
-@keyframes bounce{50%{transform:translateY(-8px)}}
-.gallery{display:flex;flex-wrap:wrap;justify-content:center;gap:18px;margin:22px 0}
+button{
+ border:0;border-radius:50px;padding:14px 24px;
+ margin:9px;font-size:16px;font-weight:bold;
+ cursor:pointer;color:white;
+ background:linear-gradient(135deg,#ff58a0,#d36bd2);
+ box-shadow:0 0 22px #ff59a040;
+ transition:.3s
+}
+button:hover{transform:scale(1.07)}
+.back{background:#ffffff18;border:1px solid #ffffff35}
+.nav{margin-top:25px}
+
+/* PHOTOS */
+.photos{
+ display:flex;justify-content:center;flex-wrap:wrap;
+ gap:18px;margin:25px 0
+}
 .photo{
- width:min(270px,100%);background:#fff;padding:9px;
- border-radius:16px;color:#a34270;transform:rotate(-2deg);
- box-shadow:0 12px 30px #0005;
+ width:min(250px,44%);
+ background:#fff;padding:8px;border-radius:14px;
+ transform:rotate(-3deg);color:#a53667;
+ box-shadow:0 12px 30px #0005
 }
-.photo:nth-child(2){transform:rotate(2deg)}
-.photo img{width:100%;height:330px;object-fit:cover;border-radius:10px}
-.caption{text-align:center;padding:10px;font-weight:bold}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.secret{
- background:linear-gradient(140deg,#ffb4d7,#c86aa1);
- color:#48162f;border-radius:20px;padding:20px;
- cursor:pointer;text-align:center;min-height:115px;
- border:1px solid #ffffff50;transition:.25s;
+.photo:nth-child(2){transform:rotate(3deg)}
+.photo img{
+ width:100%;height:300px;object-fit:cover;
+ border-radius:8px
 }
-.secret:hover{transform:scale(1.03)}
-.secret .icon{font-size:35px}
-.secret .inside{display:none;margin-top:12px;font-size:14px;line-height:1.7}
-.secret.open .inside{display:block}
-.secret.open .closed{display:none}
+.caption{padding:9px;font-size:17px;font-weight:bold}
+
+/* CARTOON WORLD */
+.bearworld{
+ display:flex;justify-content:center;align-items:center;
+ gap:12px;margin:22px auto
+}
+.bear{
+ width:105px;height:105px;border-radius:50%;
+ background:#f4eee8;position:relative;
+ box-shadow:0 0 30px #ffffff30;
+ display:flex;align-items:center;justify-content:center;
+ font-size:48px
+}
+.bear:before,.bear:after{
+ content:"";position:absolute;top:-5px;
+ width:35px;height:35px;border-radius:50%;
+ background:#4c3939;border:5px solid #f4eee8
+}
+.bear:before{left:-3px}
+.bear:after{right:-3px}
+.panda{background:#fff}
+.panda:before,.panda:after{background:#222;border-color:#fff}
+.heartbig{font-size:38px;animation:pulse 1.2s infinite}
+@keyframes pulse{50%{transform:scale(1.2)}}
+
+/* SECRET */
 .envelope{
- font-size:60px;cursor:pointer;display:inline-block;
- transition:.3s;
+ font-size:100px;cursor:pointer;
+ animation:bounce 2s infinite
 }
-.envelope:hover{transform:rotate(-8deg) scale(1.1)}
-.reveal{display:none;margin-top:15px;padding:17px;background:#ffffff12;border-radius:17px}
-.reveal.show{display:block;animation:fade .5s}
-.letter{
- background:#fff1f7;color:#8b305c;border-radius:18px;padding:20px;
- line-height:1.8;
+@keyframes bounce{50%{transform:translateY(-10px)}}
+.secret{
+ display:none;background:#fff1f7;color:#9a3765;
+ padding:22px;border-radius:20px;margin:20px 0;
+ font-size:21px;line-height:1.6
 }
-.quiz-options button{display:block;width:100%;max-width:360px;margin:10px auto}
-#quizAnswer{color:#ffd2e7;font-weight:bold;min-height:30px}
-.cake{font-size:90px;cursor:pointer;transition:.3s}
-.cake:hover{transform:scale(1.1)}
-footer{text-align:center;color:#ffd4e9;padding:30px;font-size:14px}
-@media(max-width:600px){
- header{padding:10px 5px}
- nav button{padding:8px 10px;font-size:11px}
- main{padding:15px 12px 60px}
- .card{padding:22px 15px}
- .photo img{height:280px}
- .grid{grid-template-columns:1fr 1fr}
-}
+.secret.show{display:block;animation:appear .5s}
+
+/* CAKE */
+.cake{font-size:95px;cursor:pointer}
 </style>
 </head>
 
 <body>
 
-<!-- Background video -->
-<video id="videoBg" autoplay muted loop playsinline>
+<video id="bgVideo" autoplay muted loop playsinline>
   <source src="12.mp4" type="video/mp4">
 </video>
-
 <div class="overlay"></div>
-<div id="particles"></div>
-
-<header>
-  <div class="logo">♡ A LITTLE WORLD FOR MY DUDU ♡</div>
-  <nav>
-    <button class="active" onclick="go('welcome',this)">Home 🏠</button>
-    <button onclick="go('memories',this)">Memories 📸</button>
-    <button onclick="go('secrets',this)">Secret Boxes 🎁</button>
-    <button onclick="go('love',this)">Love Letters 💌</button>
-    <button onclick="go('game',this)">Fun Zone 🎀</button>
-  </nav>
-</header>
-
-<main>
+<div id="fx"></div>
 
 <!-- PAGE 1 -->
-<section class="page active" id="welcome">
- <div class="card center">
-   <div class="bears">🐻‍❄️ 💗 🐼</div>
-   <p>Somebody very special was born today...</p>
-   <h1>Happy Birthday</h1>
-   <h2>MY DUDU ❤️</h2>
-   <p class="small">Your Bubu has secretly made something for you.</p>
-   <button class="action" onclick="go('memories')">Enter Our Little World ✨</button>
+<section class="page active" id="p1">
+<div class="content">
+ <p class="small">A little surprise for someone very special...</p>
+ <div style="font-size:55px;margin:15px">🎀 💗 🎀</div>
+ <h1 class="big glow">HAPPY<br>BIRTHDAY</h1>
+ <div class="nickname">MY DUDU ❤️</div>
+ <p class="small">Made with love by your Bubu 🥹</p>
+ <div class="nav">
+  <button onclick="next()">Open Your Surprise ✨</button>
  </div>
-
- <div class="card center">
-   <h2>🌷 Today's Main Character</h2>
-   <p>My Ladi. My Dil. My Ali Ji.</p>
-   <p>Officially the cutest birthday boy in my world. 🥹</p>
- </div>
+</div>
 </section>
 
 <!-- PAGE 2 -->
-<section class="page" id="memories">
- <div class="card center">
-   <h1>My Favourite Human 📸</h1>
-   <p>Warning: looking at you makes your Bubu miss you more. ❤️</p>
+<section class="page" id="p2">
+<div class="content">
+ <p class="small">My favourite person in the whole world</p>
+ <div class="nickname">MY LADI 💗</div>
 
-   <div class="gallery">
-     <div class="photo">
-       <img src="1.jpeg" alt="My Dudu">
-       <div class="caption">My handsome Dudu 🖤</div>
-     </div>
-     <div class="photo">
-       <img src="123.jpeg" alt="My favourite">
-       <div class="caption">My forever favourite 🤍</div>
-     </div>
-   </div>
-
-   <div class="bears">🐼 💞 🐻‍❄️</div>
-   <p>Even miles away, you're still my favourite place.</p>
-   <button class="action" onclick="go('secrets')">Find Your Secret Gifts 🎁</button>
+ <div class="photos">
+  <div class="photo">
+   <img src="1.jpeg" alt="My Dudu">
+   <div class="caption">My handsome Dudu 🖤</div>
+  </div>
+  <div class="photo">
+   <img src="123.jpeg" alt="My love">
+   <div class="caption">My favourite face 🤍</div>
+  </div>
  </div>
+
+ <p style="font-size:20px">Even miles away, you're my favourite. ❤️</p>
+ <div class="nav">
+  <button class="back" onclick="prev()">← Back</button>
+  <button onclick="next()">Next Surprise →</button>
+ </div>
+</div>
 </section>
 
 <!-- PAGE 3 -->
-<section class="page" id="secrets">
- <div class="card center">
-   <h1>Secret Gift Boxes 🎁</h1>
-   <p>Choose any box. Each one has a little surprise from Bubu.</p>
+<section class="page" id="p3">
+<div class="content">
+ <p class="small">Welcome to our tiny cute world 🥹</p>
+ <h1 class="big">BUBU & DUDU</h1>
 
-   <div class="grid">
-     <div class="secret" onclick="openBox(this)">
-       <div class="closed"><div class="icon">🎁</div><b>Gift 1</b><br>Tap to open</div>
-       <div class="inside">A lifetime supply of hugs from your Bubu. 🤗❤️</div>
-     </div>
-
-     <div class="secret" onclick="openBox(this)">
-       <div class="closed"><div class="icon">💋</div><b>Gift 2</b><br>Tap to open</div>
-       <div class="inside">Muaaah! 1000 kisses for my Dudu! 😘</div>
-     </div>
-
-     <div class="secret" onclick="openBox(this)">
-       <div class="closed"><div class="icon">🧸</div><b>Gift 3</b><br>Tap to open</div>
-       <div class="inside">You are my favourite teddy bear. I wish I could cuddle you right now!</div>
-     </div>
-
-     <div class="secret" onclick="openBox(this)">
-       <div class="closed"><div class="icon">🌙</div><b>Gift 4</b><br>Tap to open</div>
-       <div class="inside">My dua: Allah always protects you and fills your life with happiness. Ameen. 🤲</div>
-     </div>
-
-     <div class="secret" onclick="openBox(this)">
-       <div class="closed"><div class="icon">💌</div><b>Gift 5</b><br>Tap to open</div>
-       <div class="inside">No distance can change how much I love you. My heart is always with you.</div>
-     </div>
-
-     <div class="secret" onclick="openBox(this)">
-       <div class="closed"><div class="icon">🔒</div><b>Gift 6</b><br>Don't touch?</div>
-       <div class="inside">You touched it! 😂 Now you owe your Bubu one BIG hug!</div>
-     </div>
-   </div>
+ <div class="bearworld">
+  <div class="bear">🐻</div>
+  <div class="heartbig">💗</div>
+  <div class="bear panda">🐼</div>
  </div>
+
+ <div class="nickname">MY DIL ❤️</div>
+ <p style="font-size:20px">
+  If I were there, I would steal all your hugs<br>
+  and give you a million kisses! 😘
+ </p>
+
+ <div class="nav">
+  <button class="back" onclick="prev()">← Back</button>
+  <button onclick="next()">Next Surprise →</button>
+ </div>
+</div>
 </section>
 
 <!-- PAGE 4 -->
-<section class="page" id="love">
- <div class="card center">
-   <h1>Open When… 💌</h1>
-   <p>Choose an envelope, my love.</p>
+<section class="page" id="p4">
+<div class="content">
+ <p class="small">Something only your Bubu made for you…</p>
+ <h1 class="big">A SECRET FOR YOU 💌</h1>
 
-   <div class="grid">
-     <div class="secret" onclick="openLetter('miss')">
-       <div class="icon">💌</div>Open when you miss me
-     </div>
-     <div class="secret" onclick="openLetter('sad')">
-       <div class="icon">💕</div>Open when you're sad
-     </div>
-     <div class="secret" onclick="openLetter('smile')">
-       <div class="icon">🌸</div>Open when you need a smile
-     </div>
-     <div class="secret" onclick="openLetter('birthday')">
-       <div class="icon">🎂</div>Birthday envelope
-     </div>
-   </div>
+ <div class="envelope" onclick="reveal()">💌</div>
+ <p>Tap the envelope, my love!</p>
 
-   <div class="reveal" id="letterReveal">
-     <div class="envelope">💌</div>
-     <div class="letter" id="letterContent"></div>
-   </div>
+ <div class="secret" id="letter">
+  <div class="nickname">MY ALI JI ❤️</div>
+  <p>
+   I wish I could hug you today.<br>
+   I miss you, my Ladi.<br>
+   You are my favourite person.<br>
+   <b>Forever your Bubu. 💗</b>
+  </p>
  </div>
+
+ <div class="nav">
+  <button class="back" onclick="prev()">← Back</button>
+  <button onclick="next()">Next Surprise →</button>
+ </div>
+</div>
 </section>
 
 <!-- PAGE 5 -->
-<section class="page" id="game">
- <div class="card center">
-   <h1>Bubu & Dudu Fun Zone 🎀</h1>
-   <div class="bears">🐼 🥰 🐻‍❄️</div>
+<section class="page" id="p5">
+<div class="content">
+ <p class="small">One last thing, birthday boy…</p>
+ <h1 class="big glow">MY DIL</h1>
+ <div class="nickname">MY ALI JI 💖</div>
 
-   <h2>How much does Bubu love Dudu?</h2>
-   <div class="quiz-options">
-     <button class="action" onclick="answer('little')">A little bit ❤️</button>
-     <button class="action" onclick="answer('lot')">A LOTTT ❤️❤️❤️</button>
-     <button class="action" onclick="answer('unlimited')">More than the universe 🌌</button>
-   </div>
-   <p id="quizAnswer"></p>
+ <div class="cake" onclick="wish()">🎂</div>
+ <p id="wishText" style="font-size:19px">
+  Tap your cake & make a wish! ✨
+ </p>
 
-   <hr style="border:0;border-top:1px solid #ffffff25;margin:25px 0">
+ <div style="font-size:48px;margin:18px">💋 💗 💋</div>
+ <p style="font-size:20px">
+  May Allah keep you happy, safe<br>
+  and bless you with everything beautiful.
+ </p>
 
-   <h2>Don't touch this button 👀</h2>
-   <button class="action" onclick="dontTouch()">DON'T TOUCH! 🚫</button>
-   <div id="dontResult" class="reveal">
-     <h2>HAHA I KNEW IT! 😂</h2>
-     <p>Now send your Bubu a flying kiss! 😘💗</p>
-   </div>
+ <h2 class="nickname">I LOVE YOU ❤️</h2>
+ <p>Forever your Bubu 🐻</p>
 
-   <hr style="border:0;border-top:1px solid #ffffff25;margin:25px 0">
-
-   <h2>Birthday Cake 🎂</h2>
-   <div class="cake" onclick="cake()">🎂</div>
-   <p id="cakeText">Tap the cake to make a birthday wish!</p>
-
-   <button class="action" onclick="go('final')">One Last Surprise 💝</button>
+ <div class="nav">
+  <button class="back" onclick="prev()">← Back</button>
+  <button onclick="restart()">Replay Our Love Story ↻</button>
  </div>
+</div>
 </section>
-
-<!-- PAGE 6 -->
-<section class="page" id="final">
- <div class="card center">
-   <div class="bears">🐻‍❄️ 💗 🐼</div>
-   <h1>Happy Birthday, My Ali Ji!</h1>
-   <h2>My Dudu. My Ladi. My Dil. ❤️</h2>
-
-   <p>
-    I wish I could hug you today.<br>
-    Until then, all my love is travelling to you.
-   </p>
-
-   <div style="font-size:55px;margin:20px">💋 💗 🎂 💋</div>
-
-   <p>
-    May Allah protect you, bless you, and always keep you smiling.<br>
-    I love you endlessly.
-   </p>
-
-   <h2>Forever Your Bubu 🐼❤️</h2>
-   <button class="action" onclick="hearts(80)">Send 80 Hearts 💕</button>
-   <button class="action secondary" onclick="go('welcome')">Replay Our Surprise ↻</button>
- </div>
-</section>
-
-</main>
-
-<footer>
-  Made with lots of love by your Bubu ❤️
-</footer>
 
 <script>
-function go(id,btn){
+let current=1;
+const total=5;
+
+function showPage(n){
  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
- const page=document.getElementById(id);
- if(page)page.classList.add('active');
- document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
- if(btn)btn.classList.add('active');
+ document.getElementById('p'+n).classList.add('active');
+ current=n;
  window.scrollTo({top:0,behavior:'smooth'});
  hearts(12);
 }
+function next(){if(current<total)showPage(current+1)}
+function prev(){if(current>1)showPage(current-1)}
+function restart(){showPage(1)}
 
-function openBox(box){
- box.classList.toggle('open');
- hearts(15);
+function reveal(){
+ document.getElementById('letter').classList.toggle('show');
+ hearts(30);
 }
-
-function openLetter(type){
- const messages={
-  miss:"My Dudu, if you miss me, look at the moon tonight. Somewhere under the same moon, your Bubu is missing you too. ❤️🌙",
-  sad:"My Ladi, please remember you're loved, you're precious, and you're never alone. Your Bubu is always in your corner. 🤗",
-  smile:"Imagine Bubu running to Dudu with tiny legs and giving the biggest hug ever! 🐼💞🐻‍❄️",
-  birthday:"Happy Birthday, my Dil! You are one of the most beautiful blessings in my life. May Allah always keep you happy. ❤️🎂"
- };
- document.getElementById('letterContent').innerHTML=messages[type];
- document.getElementById('letterReveal').classList.add('show');
- hearts(25);
-}
-
-function answer(type){
- const text={
-  little:"Wrong answer! 😂 Bubu loves Dudu INFINITY times! ♾️❤️",
-  lot:"Correct! But actually… even MORE than that! 🥹💕",
-  unlimited:"Correct answer! Bubu's love has no limit! ♾️💗"
- };
- document.getElementById('quizAnswer').innerHTML=text[type];
- hearts(20);
-}
-
-function dontTouch(){
- document.getElementById('dontResult').classList.add('show');
+let wishes=0;
+function wish(){
+ wishes++;
+ document.getElementById('wishText').innerHTML=
+ wishes===1?"Make a beautiful wish, my Dudu! ✨":
+ wishes===2?"Blow the candles! 🕯️💨":
+ "Wish granted! Sending you a million kisses! 😘❤️";
  hearts(30);
 }
 
-let cakeCount=0;
-function cake(){
- cakeCount++;
- const txt=document.getElementById('cakeText');
- if(cakeCount===1)txt.innerHTML="Make a wish, my Dudu! ✨";
- else if(cakeCount===2)txt.innerHTML="Blowww the candles! 🕯️💨";
- else txt.innerHTML="Wish granted! A million kisses from Bubu! 😘❤️";
- hearts(25);
-}
-
-function hearts(count=15){
- const layer=document.getElementById('particles');
- for(let i=0;i<count;i++){
+function hearts(num){
+ const fx=document.getElementById('fx');
+ for(let i=0;i<num;i++){
   setTimeout(()=>{
-   const h=document.createElement('div');
-   h.className='heart';
-   h.innerHTML=['💗','💕','❤️','✨','😘'][Math.floor(Math.random()*5)];
+   let h=document.createElement('div');
+   h.className='float';
+   h.innerHTML=['💗','💕','✨','💋','❤️'][Math.floor(Math.random()*5)];
    h.style.left=Math.random()*100+'vw';
-   h.style.fontSize=(16+Math.random()*25)+'px';
+   h.style.fontSize=(18+Math.random()*28)+'px';
    h.style.animationDuration=(4+Math.random()*4)+'s';
-   layer.appendChild(h);
+   fx.appendChild(h);
    setTimeout(()=>h.remove(),8000);
-  },i*50);
+  },i*70);
  }
 }
-setInterval(()=>hearts(1),1300);
+setInterval(()=>hearts(1),1700);
+
+/* Slow video playback */
+const video=document.getElementById('bgVideo');
+video.addEventListener('loadedmetadata',()=>{
+ video.playbackRate=0.55;
+});
+video.playbackRate=0.55;
 </script>
+
 </body>
 </html>

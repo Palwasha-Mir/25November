@@ -317,3 +317,18 @@ video.playbackRate=0.55;
 
 </body>
 </html>
+<script>
+function replayAndWhatsApp() {
+  const phone = "923348147509";
+  const message = " ❤️ Bubu Ji 😘";
+
+  showPage(1);
+
+  setTimeout(() => {
+    window.open(
+      "https://wa.me/" + phone + "?text=" + encodeURIComponent(message),
+      "_blank"
+    );
+  }, 3000);
+}
+</script>
